@@ -102,3 +102,15 @@ class HomePage(BasePage):
 
     def verify_mobile_menu_visible(self):
         expect(self.global_navigation()).to_be_visible()
+
+    def open_india_home_page(self):
+        self.open_url("https://www.apple.com/in/?cid-oas-in-domains-apple.in/")
+
+    def open_store_from_india_home(self):
+        self.open_india_home_page()
+        self.open_store_page()
+
+    def open_support_page(self):
+        support_link = self.global_navigation().get_by_role("link", name="Support", exact=True).first
+        support_link.click()
+        self.page.wait_for_load_state("domcontentloaded")

@@ -30,3 +30,12 @@ class StorePage(BasePage):
 
     def verify_bag_link_available(self):
         expect(self.bag_link()).to_be_visible()
+
+    def open_airpods_category(self):
+        self.verify_store_page_loaded()
+        self.shopping_links().filter(has_text="AirPods").first.click()
+        self.page.wait_for_load_state("domcontentloaded")
+
+    def open_specific_airpods_product(self):
+        self.main_content().get_by_role("link", name="AirPods 4").nth(5).click()
+        self.page.wait_for_load_state("domcontentloaded")
