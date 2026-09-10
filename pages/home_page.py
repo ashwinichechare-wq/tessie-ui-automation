@@ -102,3 +102,10 @@ class HomePage(BasePage):
 
     def verify_mobile_menu_visible(self):
         expect(self.global_navigation()).to_be_visible()
+
+    def click_apple_logo_link(self, force: bool = False):
+        apple_link = self.apple_logo_link().first
+        apple_link.click(force=force)
+
+    def bring_page_to_front(self):
+        self.page.bring_to_front()
